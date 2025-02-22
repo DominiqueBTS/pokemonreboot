@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+input::placeholder {
+  color: #fff; // Use your desired color
+}
+
 
 body {
   background-color: #0A1633;

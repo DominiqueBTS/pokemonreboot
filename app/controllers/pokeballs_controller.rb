@@ -10,6 +10,12 @@ class PokeballsController < ApplicationController
     end
   end
 
+  def destroy
+    @pokeball = Pokeball.find(params[:id])
+    @pokeball.destroy
+    redirect_to trainer_path(@pokeball.trainer)
+  end
+
   private
 
   def pokeball_params

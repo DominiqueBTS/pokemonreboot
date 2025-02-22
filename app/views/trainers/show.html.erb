@@ -15,10 +15,13 @@
           <span class="element-type"><%= pokeball.pokemon.element_type %></span>
           <p>caught on <%= pokeball.caught_on.strftime("%B %d, %Y") %> at <%= pokeball.location %></p>
           <%= link_to "", pokemon_path(pokeball.pokemon), class: "pokemon-card-link" %>
+          <%= link_to "Release", pokeball, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
         </div>
       <% end %>
     </div>
   <% else %>
     <p class="text-secondary">This trainer has no Pokémon yet. They should get training!</p>
   <% end %>
+  <%= link_to "Delete Trainer", @trainer, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn poke-btn mt-5" %>
+</div>
 </div>

@@ -9,6 +9,11 @@
 #   end
 require "open-uri"
 
+puts 'Cleaning database...'
+Pokeball.destroy_all
+Trainer.destroy_all
+Pokemon.destroy_all
+
 puts 'Creating trainers...'
 ash = Trainer.create(name: "Ash Ketchum", age: 18)
 ash.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/e/e4/Ash_Ketchum_Journeys.png'), filename: 'ash_ketchum.png', content_type: 'image/png')
@@ -21,7 +26,7 @@ brock.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/7/71/
 puts "Brock is on the scene!"
 
 puts 'Creating pokemons...'
-response = URI.open('https://pokeapi.co/api/v2/pokemon?limit=100').read
+response = URI.open('https://pokeapi.co/api/v2/pokemon?limit=50').read
 results = JSON.parse(response)['results']
 results.each do |result|
   info = JSON.parse(URI.open(result['url']).read)

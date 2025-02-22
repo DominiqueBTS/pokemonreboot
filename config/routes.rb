@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root to: "pokemons#index"
+  resources :trainers
+  resources :pokeballs, only: [:destroy]
   resources :pokemons, only: [:show, :index] do
     resources :pokeballs, only: [:create]
+    collection do
+      get :random
+    end
   end
-  resources :trainers, only: [:show, :index]
 end

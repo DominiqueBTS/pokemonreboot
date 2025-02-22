@@ -2,10 +2,19 @@
   <div class="header">
     <h1>Pokédex</h1>
     <%= link_to "Trainers", trainers_path %>
+    <%= link_to "Random Pokémon", random_pokemons_path %>
   </div>
-  <div class="grid">
-	  <% @pokemons.each do |pokemon| %>
-	    <%= render pokemon %>
-	  <% end %>
-   </div>
+  <%= form_tag pokemons_path, method: :get, class: "d-flex my-3" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Pokèmon" %>
+    <%= submit_tag "Search", class: "btn poke-btn" %>
+  <% end %>
+  <% if @pokemons.exists? %>
+    <div class="grid">
+      <% @pokemons.each do |pokemon| %>
+        <%= render pokemon %>
+      <% end %>
+    </div>
+  <% else @pokemons.empty? %>
+    <p>There are no Pokemon in the Pokedex for your search</p>
+  <% end %>
 </div>
