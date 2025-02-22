@@ -1,0 +1,5 @@
+<div class="pokemon-card">
+  <%= cl_image_tag pokemon.photo.key %>
+  <h2><%= link_to pokemon.name, pokemon %></h2>
+  <span class="element-type"><%= pokemon.element_type %></span>
+</div>

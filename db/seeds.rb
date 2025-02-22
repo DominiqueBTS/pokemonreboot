@@ -9,23 +9,16 @@
 #   end
 require "open-uri"
 
-file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
-article = Article.new(title: "NES", body: "A great console")
-article.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-article.save
-
+puts 'Creating trainers...'
 ash = Trainer.create(name: "Ash Ketchum", age: 18)
 ash.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/e/e4/Ash_Ketchum_Journeys.png'), filename: 'ash_ketchum.png', content_type: 'image/png')
-puts "Ash arrived in the arena!"
-## Now we do the same for the next Trainers, Misty and Brock
-
-lillie = Trianer.create(name: "Lillie", age: 16)
-lillie.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/e/e3/Lillie_Sun_and_Moon.png', filename: '180px-Lilly.png', content_type: 'image/png'))
-puts "Lillie is there, too!"
-
-misty = Trianer.create(name: "Misty", age: 20)
+puts "Ash has stepped up to the plate!"
+misty = Trainer.create(name: "Misty", age: 20)
 misty.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/b/b1/MistyEP.png'), filename: 'misty.png', content_type: 'image/png')
 puts "Misty is ready to go!"
+brock = Trainer.create(name: "Brock", age: 22)
+brock.photo.attach(io: URI.open('https://upload.wikimedia.org/wikipedia/en/7/71/DP-Brock.png'), filename: 'brock.png', content_type: 'image/png')
+puts "Brock is on the scene!"
 
 puts 'Creating pokemons...'
 response = URI.open('https://pokeapi.co/api/v2/pokemon?limit=100').read

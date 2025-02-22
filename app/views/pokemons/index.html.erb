@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header">
+    <h1>Pokédex</h1>
+    <%= link_to "Trainers", trainers_path %>
+  </div>
+  <div class="grid">
+	  <% @pokemons.each do |pokemon| %>
+	    <%= render pokemon %>
+	  <% end %>
+   </div>
+</div>
